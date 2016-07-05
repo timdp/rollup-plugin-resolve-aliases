@@ -5,6 +5,8 @@ import path from 'path'
 const debug = _debug('rollup-plugin-resolve-aliases')
 
 export default ({aliases}) => ({
+  name: 'resolve-aliases',
+
   resolveId (importee, importer) {
     // Make absolute
     if (importee.charAt(0) === '.') {
