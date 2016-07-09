@@ -4,7 +4,7 @@ import path from 'path'
 
 const debug = _debug('rollup-plugin-resolve-aliases')
 
-export default ({aliases}) => ({
+export default ({aliases, jsnext}) => ({
   name: 'resolve-aliases',
 
   resolveId (importee, importer) {
@@ -18,7 +18,7 @@ export default ({aliases}) => ({
     }
     if (fs.statSync(alias).isDirectory()) {
       const pkg = require(path.join(alias, 'package.json'))
-      const main = pkg['jsnext:main'] || pkg.main || 'index.js'
+      const main = (jsnext && pkg['jsnext:main']) || pkg.main || 'index.js'
       debug(`Main for ${importee} is ${main}`)
       alias = path.join(alias, main)
     }

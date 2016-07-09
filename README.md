@@ -23,7 +23,8 @@ export default {
       aliases: {
         'module-foo': 'node_modules/module-foo/main.js',
         'module-bar': 'node_modules/baz/node_modules/quux/src/'
-      }
+      },
+      jsnext: true // Default: false
     })
   ]
 }
